@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 const EditRecipe = () => {
@@ -29,6 +30,9 @@ const EditRecipe = () => {
   const handleCreateRecipe = async (e) => {
     e.preventDefault();
 
+    // alert confirmation
+    const isConfirmed = window.confirm("Are you sure to update this Recipe?")
+
     const form = e.target;
 
     const title = form.title.value;
@@ -44,32 +48,35 @@ const EditRecipe = () => {
     };
 
     await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData);
+    if(isConfirmed) toast.success("Product Updated.!")
   };
   return (
-    <div className="w-full px-16">
-      <h1 className="text-4xl mb-4">Add Recipe</h1>
-      <form onSubmit={handleCreateRecipe} className="w-full">
-        <div className="mb-4">
-          <label htmlFor="">Title </label>
-          <input
-            defaultValue={recipeDetails?.title}
-            type="text"
-            name="title"
-            className="w-full py-3 px-5 border"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="">Price </label>
-          <input
-            type="number"
-            name="price"
-            defaultValue={recipeDetails?.price}
-            className="w-full py-3 px-5 border"
-          />
+    <div className="w-full px-16 bg-gradient-to-t from-cyan-500 to-slate-400 p-10 m-10">
+      <h1 className="text-4xl font-mono text-center mb-10">Edit Recipe</h1>
+      <form onSubmit={handleCreateRecipe} className="w-full ">
+        <div className="flex justify-between items-center">
+          <div className="mb-4">
+            <label htmlFor="">Title </label>
+            <input
+              defaultValue={recipeDetails?.title}
+              type="text"
+              name="title"
+              className="w-full py-3 px-5 input input-bordered border border-black"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="">Price </label>
+            <input
+              type="number"
+              name="price"
+              defaultValue={recipeDetails?.price}
+              className="w-full py-3 px-5 input input-bordered border border-black"
+            />
+          </div>
         </div>
         <div className="mb-4">
           <label htmlFor="">Cateogry </label>
-          <select name="category" id="" className="w-full py-3 px-5 border">
+          <select name="category" id="" className="w-full py-3 px-5 input input-bordered border border-black">
             {categories?.map((category) => (
               <option
                 key={category?.title}
@@ -87,15 +94,15 @@ const EditRecipe = () => {
           <textarea
             defaultValue={recipeDetails?.description}
             name="description"
-            className="w-full py-3 px-5 border"
+            className="w-full py-3 px-5 input input-bordered border border-black"
           />
         </div>
 
         <div className="mb-4">
           <input
             type="submit"
-            value={"Add Recipe"}
-            className="w-full btn py-3 px-5 border btn-neutral"
+            value={"Update Recipe"}
+            className="w-full btn py-3 px-5 hover:bg-green-600 hover:border-green-500 hover:text-bold text-white border border-green-500 bg-green-500"
           />
         </div>
       </form>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const AddRecipe = () => {
   const [categories, setCategories] = useState();
@@ -19,6 +20,9 @@ const AddRecipe = () => {
   const handleCreateRecipe = async (e) => {
     e.preventDefault();
 
+    // confirmation alert
+    const isConfirmed = window.confirm("Are you sure to update this Recipe.?")
+
     const form = e.target;
 
     const id = form.id.value;
@@ -35,41 +39,65 @@ const AddRecipe = () => {
     };
 
     await axios.post("http://localhost:3000/recipes", recipeData);
+    if(isConfirmed){
+      toast.success('Recipe Added.!')
+    }
   };
   return (
-    <div className="w-full px-16">
-      <h1 className="text-4xl mb-4">Add Recipe</h1>
+    <div className="w-full px-16 bg-gradient-to-t from-cyan-500 to-slate-400 p-10 m-10">
+      <h1 className="text-4xl mb-10 text-center font-mono">Add Recipe</h1>
       <form onSubmit={handleCreateRecipe} className="w-full">
-        <div className="mb-4">
-          <label htmlFor="">Id </label>
-          <input type="text" name="id" className="w-full py-3 px-5 border" />
+        <div className="flex justify-between items-center">
+          <div className="mb-4 ml-[-15px]">
+            <input
+              type="text"
+              name="id"
+              placeholder="Enter Id"
+              className="w-[255px] mt-5  py-3 px-5 border input input-bordered input-primary"
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              type="text"
+              name="title"
+               placeholder="Enter Title"
+              className="w-[255px] py-3 px-5 border input input-bordered input-primary"
+            />
+          </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="">Title </label>
-          <input type="text" name="title" className="w-full py-3 px-5 border" />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="">Price </label>
-          <input
-            type="number"
-            name="price"
-            className="w-full py-3 px-5 border"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="">Cateogry </label>
-          <select name="category" id="" className="w-full py-3 px-5 border">
-            {categories?.map((category) => (
-              <option key={category?.id} value={category?.title}>
-                {category?.title}
-              </option>
-            ))}
-          </select>
+        <div className="flex justify-between items-center">
+          <div className="mb-4 ml-[-15px]">
+            <input
+              type="number"
+              name="price"
+              placeholder="Price"
+              className="w-[255px] py-3 px-5 border input input-bordered input-primary max-w-xs"
+            />
+          </div>
+          <div className="mb-4">
+            <select
+              name="category"
+              value={'Category'}
+              id=""
+              className="w-[255px] py-3 px-5 border input input-bordered input-primary "
+            >
+              <option selected>Select Category</option>
+              {categories?.map((category) => (
+                <option key={category?.id} value={category?.title}>
+                  {category?.title}
+                </option>
+                
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="">Description </label>
-          <textarea name="description" className="w-full py-3 px-5 border" />
+        <div className="mb-4 ml-[-15px]">
+          <textarea
+          placeholder="Description"
+            name="description"
+            className="w-full py-3 px-5 border input input-bordered input-primary"
+          />
         </div>
 
         <div className="mb-4">
@@ -77,6 +105,7 @@ const AddRecipe = () => {
             type="submit"
             value={"Add Recipe"}
             className="w-full btn py-3 px-5 border btn-neutral"
+            alert="sdkfsdjf sdfd"
           />
         </div>
       </form>

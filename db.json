@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Spaghetti Carbonara 2",
-      "price": 12.99,
+      "price": "12.99",
       "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
       "image": "https://example.com/images/spaghetti-carbonara.jpg",
       "category": "Thai"
@@ -11,15 +11,15 @@
     {
       "id": "2",
       "title": "Chicken Tikka Masala",
-      "price": 15.99,
+      "price": "14.99",
       "description": "Grilled chunks of chicken enveloped in a creamy, spiced tomato sauce.",
       "image": "https://example.com/images/chicken-tikka-masala.jpg",
       "category": "Indian"
     },
     {
       "id": "3",
-      "title": "Sushi Platter",
-      "price": 24.99,
+      "title": "safasdf asf",
+      "price": "24.99",
       "description": "A variety of fresh sushi including nigiri, sashimi, and rolls.",
       "image": "https://example.com/images/sushi-platter.jpg",
       "category": "Japanese"
@@ -125,6 +125,62 @@
       "price": "121",
       "category": "Mexican",
       "description": "test descittion"
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Italian",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "price": "",
+      "category": "Select Category",
+      "description": ""
     }
   ],
   "categories": [
@@ -170,5 +226,3 @@
     }
   ]
 }
-
-

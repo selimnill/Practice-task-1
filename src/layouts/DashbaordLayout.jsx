@@ -1,6 +1,6 @@
 import { useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase.config";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 export default function DashbaordLayout() {
   const [signOut] = useSignOut(auth);
@@ -17,7 +17,7 @@ export default function DashbaordLayout() {
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
         >
-          Open drawer
+          Dashboard Menu
         </label>
       </div>
       <div className="drawer-side">
@@ -26,14 +26,14 @@ export default function DashbaordLayout() {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-60 min-h-screen bg-base-200 text-base-content flex flex-col justify-between">
+        <ul className="menu p-5 w-60 min-h-screen  flex flex-col justify-between bg-slate-600 text-white font-semibold">
           {/* Sidebar content here */}
-          <div>
-            <li>
-              <Link to={"/dashboard/manage-recipes"}>Mangae All Recipes</Link>
+          <div className="mt-5">
+            <li  className="rounded font-semibold"> 
+              <NavLink to={"/dashboard/manage-recipes"}>Mangae All Recipes</NavLink>
             </li>
-            <li>
-              <Link to={"/dashboard/add-recipe"}>Add Recipe</Link>
+            <li  className="rounded font-semibold mt-3">
+              <NavLink to={"/dashboard/add-recipe"}>Add Recipe</NavLink>
             </li>
           </div>
           <div className="flex gap-4">
